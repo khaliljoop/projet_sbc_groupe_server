@@ -46,7 +46,13 @@ public class C_securite {
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping(path = {"/getMenuByCode"})
+    public M_menu getMenuByIdMenu(@RequestParam String code) {
+        return menuRepo.findM_menuByCode(code);}
 
+    @GetMapping(path = {"/getMenuById"})
+    public Optional<M_menu> getMenuById(@RequestParam Integer id) {
+        return menuRepo.findById(id);}
     /*************** ------- Sous menu --------- ***************/
     @GetMapping(path = {"/getSmenus"})
     @ResponseBody
@@ -68,6 +74,10 @@ public class C_securite {
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping(path = {"/getSmenuByMenu"})
+    public M_smenu getSmenuByMenu(@RequestParam M_menu m) {
+        return smenuRepo.findM_smenuByMenu(m);}
 
 
     /*************** ------- Profil --------- ***************/

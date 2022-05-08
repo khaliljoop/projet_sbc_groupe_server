@@ -11,5 +11,6 @@ import java.lang.String;
 public interface IPersonne extends CrudRepository<Personne,Long> {
     Personne findPersonneByUsernameAndPassword(String username, String password);
     Personne findPersonneByUsername(String username);
+    Personne findPersonneByPassword(String p);
 }
 
