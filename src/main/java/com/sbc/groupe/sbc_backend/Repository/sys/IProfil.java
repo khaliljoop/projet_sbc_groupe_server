@@ -2,7 +2,8 @@ package com.sbc.groupe.sbc_backend.Repository.sys;
 
 import com.sbc.groupe.sbc_backend.Model.sys.M_type_profil;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IProfil extends JpaRepository<M_type_profil,Integer> {
+public interface IProfil extends CrudRepository<M_type_profil,Integer> {
 
 }

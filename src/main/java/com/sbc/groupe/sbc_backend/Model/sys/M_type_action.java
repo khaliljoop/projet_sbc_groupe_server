@@ -10,7 +10,7 @@ public class M_type_action {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_ction;
     @ManyToOne
-    @JoinColumn(name = "code_profile")
+    @JoinColumn(name = "id_profile")
     private M_type_profil profil;
     @ManyToOne
     @JoinColumn(name = "id_smenu")
@@ -26,7 +26,8 @@ public class M_type_action {
     private Integer d_del;
     public  M_type_action (){}
 
-    public M_type_action(M_type_profil profil, M_smenu smenu, Integer d_read, Integer d_add, Integer d_update, Integer d_del) {
+    public M_type_action(M_type_profil profil,M_smenu smenu, Integer d_read, Integer d_add, Integer d_update, Integer d_del) {
+
         this.profil = profil;
         this.smenu = smenu;
         this.d_read = d_read;
@@ -43,7 +44,7 @@ public class M_type_action {
         this.id_ction = id_ction;
     }
 
-    public M_type_profil getProfil() {
+   public M_type_profil getProfil() {
         return profil;
     }
 

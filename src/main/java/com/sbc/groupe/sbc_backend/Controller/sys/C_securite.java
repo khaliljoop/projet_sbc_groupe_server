@@ -53,6 +53,16 @@ public class C_securite {
     @GetMapping(path = {"/getMenuById"})
     public Optional<M_menu> getMenuById(@RequestParam Integer id) {
         return menuRepo.findById(id);}
+
+    @DeleteMapping("/delete_menu/{id}")
+    public ResponseEntity<HttpStatus> deleteMenu(@PathVariable("id") Integer id) {
+        try {
+            menuRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     /*************** ------- Sous menu --------- ***************/
     @GetMapping(path = {"/getSmenus"})
     @ResponseBody
@@ -79,6 +89,16 @@ public class C_securite {
     public M_smenu getSmenuByMenu(@RequestParam M_menu m) {
         return smenuRepo.findM_smenuByMenu(m);}
 
+    @DeleteMapping("/delete_smenu/{id}")
+    public ResponseEntity<HttpStatus> deleteSmenu(@PathVariable("id") Integer id) {
+        try {
+            smenuRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
     /*************** ------- Profil --------- ***************/
     @GetMapping(path = {"/getProfils"})
@@ -88,6 +108,10 @@ public class C_securite {
         //List all = secRepo.findAll();
         return profilRepo.findAll();
     }
+
+    @GetMapping(path = {"/getProfilById"})
+    public Optional<M_type_profil> getProfilById(@RequestParam Integer id) {
+        return profilRepo.findById(id);}
 
     @PostMapping(path = {"/profil/add"})
     public ResponseEntity<M_type_profil> addProfil(@RequestBody M_type_profil profil){
@@ -102,6 +126,16 @@ public class C_securite {
         }
     }
 
+    @DeleteMapping("/delete_profil/{id}")
+    public ResponseEntity<HttpStatus> deleteProfil(@PathVariable("id") Integer id) {
+        try {
+            profilRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /*************** ------- Action --------- ***************/
     @GetMapping(path = {"/getActions"})
     @ResponseBody
@@ -109,6 +143,11 @@ public class C_securite {
     {
         //List all = secRepo.findAll();
         return actionRepo.findAll();
+    }
+
+    @GetMapping(path = {"/getActionSmenuAndProfil/{profil}"})
+    public M_type_action getActionSmenuAndProfil(@PathVariable Integer profil) {
+        return actionRepo.getMTypeActionByProfil(profil);
     }
 
     @PostMapping(path = {"/action/add"})
@@ -125,7 +164,7 @@ public class C_securite {
     }
 
     @PutMapping("/update_action/{id}")
-    public ResponseEntity<M_type_action> updateTutorial(@PathVariable("id") Integer id, @RequestBody M_type_action action) {
+    public ResponseEntity<M_type_action> updateAction(@PathVariable("id") Integer id, @RequestBody M_type_action action) {
         Optional<M_type_action> actionData = actionRepo.findById(id);
 
         if (actionData.isPresent()) {
