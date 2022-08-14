@@ -4,26 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.ValueGenerationType;
 
 import javax.persistence.*;
-import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-
-public class Marque {
+public class Activite {
     @Id
-    @Column(name = "id_marque")
+    @Column(name = "id_activite")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_marque;
-    @Column(name = "libelle",length = 100)
+    private int id_activite;
+    private int type_activite;
+    @Column(name="description",length = 3000)
+    private String description;
     private String libelle;
-    @Column(name = "created")
-    @Temporal(TemporalType.DATE)
-    private Date created;
-    @Column(name = "modified")
-    @Temporal(TemporalType.DATE)
-    private Date modified;
+
 }
