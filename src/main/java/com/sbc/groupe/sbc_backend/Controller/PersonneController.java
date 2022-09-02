@@ -27,7 +27,7 @@ public class PersonneController {
     }
 
     @GetMapping(path = {"/personne/{id_personne}"})
-    public Optional<Personne> getPersonneById(@PathVariable("id_personne") Long id_personne) {
+    public Optional<Personne> getPersonneById(@PathVariable("id_personne") String id_personne) {
         return personneRepo.findById(id_personne);}
 
     @GetMapping(path = {"/getLoginPersonne"})

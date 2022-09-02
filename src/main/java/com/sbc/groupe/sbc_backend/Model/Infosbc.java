@@ -16,9 +16,8 @@ import java.sql.Date;
 @ToString
 @Entity
 public class Infosbc {
-
     @Id
-    private Long id;
+    private int id;
     @Column(name="adresse",length = 1000)
     private String adresse;
     private String mail_sbc;

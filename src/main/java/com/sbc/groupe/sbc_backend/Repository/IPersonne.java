@@ -8,7 +8,7 @@ import java.lang.String;
 
 @RepositoryRestResource
 @Repository
-public interface IPersonne extends CrudRepository<Personne,Long> {
+public interface IPersonne extends CrudRepository<Personne,String> {
     Personne findPersonneByUsernameAndPassword(String username, String password);
     Personne findPersonneByUsername(String username);
     Personne findPersonneByPassword(String p);

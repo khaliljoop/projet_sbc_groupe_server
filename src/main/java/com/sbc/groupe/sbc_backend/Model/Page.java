@@ -17,7 +17,7 @@ public class Page {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String page_nom ;
     private String type;
     @Column(length = 2000)

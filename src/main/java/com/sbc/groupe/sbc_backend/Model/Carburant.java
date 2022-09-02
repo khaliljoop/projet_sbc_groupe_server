@@ -6,18 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-
-public class Marque {
+public class Carburant {
     @Id
-    @Column(name = "id_marque")
+    @Column(name = "id_carburant")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_marque;
-    @Column(name = "libelle",length = 100)
+    private int id_carburant;
     private String libelle;
 }

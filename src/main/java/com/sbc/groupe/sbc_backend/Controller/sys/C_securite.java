@@ -3,6 +3,7 @@ package com.sbc.groupe.sbc_backend.Controller.sys;
 
 import com.sbc.groupe.sbc_backend.Model.sys.*;
 import com.sbc.groupe.sbc_backend.Repository.sys.*;
+import com.sbc.groupe.sbc_backend.constante.Constantes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@CrossOrigin(origins = "http://localhost:9091")
+@CrossOrigin(origins = Constantes.host)
 @RestController
 public class C_securite {
     @Autowired
