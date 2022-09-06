@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = Constantes.host)
 @RestController
@@ -27,6 +28,13 @@ public class VehiculeController {
     {
         return vRepo.findAll();
     }
+
+    @GetMapping(path = {"/getVehicule/{id}"})
+    public Optional<Vehicule> getVehiculeById(@PathVariable Long id)
+    {
+        return vRepo.findById(id);
+    }
+
     @PostMapping( value = {"/vehicule/add"})
     public ResponseEntity<Vehicule> addVehicule( @RequestBody Vehicule v){
         try {
