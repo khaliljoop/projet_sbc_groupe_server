@@ -103,12 +103,20 @@ public class C_securite {
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
     @DeleteMapping("/delete_smenu/{id}")
     public ResponseEntity<HttpStatus> deleteSmenu(@PathVariable("id") Integer id) {
         try {
-            smenuRepo.deleteById(id);
+             smenuRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/delete_smenu_menu/{id_menu}")
+    public ResponseEntity<HttpStatus> deleteSmenuMenu(@PathVariable("id_menu") Integer id_menu) {
+        try {
+            smenuRepo.deleteSmenuByMenu(id_menu);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -211,6 +219,15 @@ public class C_securite {
         }
     }
 
+    @DeleteMapping("/delete_action_sm/{id_smenu}")
+    public ResponseEntity<HttpStatus> deleteAction_sm(@PathVariable("id_smenu") Integer id_smenu) {
+        try {
+            actionRepo.delelete_actionById_smenu(id_smenu);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     @DeleteMapping("/delete_actions")
     public ResponseEntity<HttpStatus> deleteActions() {
         try {

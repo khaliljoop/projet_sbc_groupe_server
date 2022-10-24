@@ -1,12 +1,9 @@
 package com.sbc.groupe.sbc_backend.Repository.sys;
 
-import com.sbc.groupe.sbc_backend.Model.sys.M_smenu;
 import com.sbc.groupe.sbc_backend.Model.sys.M_type_action;
-import com.sbc.groupe.sbc_backend.Model.sys.M_type_profil;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,4 +17,8 @@ public interface IAction extends JpaRepository<M_type_action,Integer> {
     //List<M_type_action> getM_type_actionById_profil(Integer id_profil);
     @Query(value = "select a from M_type_action  a where a.id_profil=:id_profil")
     List<M_type_action> getM_type_actionById_profil(Integer id_profil);
+
+    @Modifying
+    @Query(value = "delete from M_type_action  a where a.id_smenu=:id_smenu")
+    void delelete_actionById_smenu(Integer id_smenu);
 }

@@ -1,7 +1,6 @@
 package com.sbc.groupe.sbc_backend.Controller.sys;
 import com.sbc.groupe.sbc_backend.Model.Carburant;
 import com.sbc.groupe.sbc_backend.Model.Marque;
-import com.sbc.groupe.sbc_backend.Model.sys.M_menu;
 import com.sbc.groupe.sbc_backend.Repository.ICarburant;
 import com.sbc.groupe.sbc_backend.Repository.IMarque;
 import com.sbc.groupe.sbc_backend.constante.Constantes;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = Constantes.host)
 @Controller
@@ -44,6 +44,12 @@ public class C_parametrage {
         return (List<Marque>) marqueRepo.findAll();
     }
 
+    @GetMapping(path = {"/getMarqueById/{id}"})
+    public Optional<Marque> getMarqueById(@PathVariable Integer id)
+    {
+        return  marqueRepo.findById(id);
+    }
+
     /*************************** Param Carburant ****************************************/
     @PostMapping("/carburant/add")
     public ResponseEntity<Carburant> addCarburant(@RequestBody Carburant c)
@@ -56,7 +62,6 @@ public class C_parametrage {
         catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @GetMapping(path = {"/getCarburants"})
@@ -64,6 +69,12 @@ public class C_parametrage {
     public List<Carburant> getCarburants()
     {
         return  carburant.findAll();
+    }
+
+    @GetMapping(path = {"/getCarburantById/{id}"})
+    public Optional<Carburant> getCarburantById(@PathVariable Integer id)
+    {
+        return  carburant.findById(id);
     }
 
 

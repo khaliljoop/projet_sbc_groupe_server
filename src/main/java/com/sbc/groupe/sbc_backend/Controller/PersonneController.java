@@ -42,7 +42,7 @@ public class PersonneController {
     public ResponseEntity<Personne> addPersonne(@RequestBody Personne p){
         try {
             //p.getId_personne(),
-            Personne _pers=(Personne) personneRepo.save(p);
+            Personne _pers=personneRepo.save(p);
             return new ResponseEntity<>(_pers, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
