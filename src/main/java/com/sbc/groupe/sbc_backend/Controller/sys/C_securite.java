@@ -135,6 +135,10 @@ public class C_securite {
     public Optional<M_type_profil> getProfilById(@RequestParam Integer id) {
         return profilRepo.findById(id);}
 
+    @GetMapping(path = {"/getProfilByUid/{id}"})
+    public Optional<M_type_profil> getProfilByUid(@PathVariable String id) {
+        return Optional.ofNullable(profilRepo.getProfilByUid(id));}
+
     @PostMapping(path = {"/profil/add"})
     public ResponseEntity<M_type_profil> addProfil(@RequestBody M_type_profil profil){
 
@@ -252,7 +256,7 @@ public class C_securite {
     public ResponseEntity<M_user> addUser(@RequestBody M_user user){
 
         try {
-            M_user _user=(M_user) userRepo.save(user);
+            M_user _user=userRepo.save(user);
             return new ResponseEntity<>(_user, HttpStatus.CREATED);
         }
         catch (Exception e)

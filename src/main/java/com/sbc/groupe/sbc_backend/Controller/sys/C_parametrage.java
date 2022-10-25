@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +44,7 @@ public class C_parametrage {
     }
 
     @GetMapping(path = {"/getMarqueById/{id}"})
+    @ResponseBody
     public Optional<Marque> getMarqueById(@PathVariable Integer id)
     {
         return  marqueRepo.findById(id);
@@ -72,6 +72,7 @@ public class C_parametrage {
     }
 
     @GetMapping(path = {"/getCarburantById/{id}"})
+    @ResponseBody
     public Optional<Carburant> getCarburantById(@PathVariable Integer id)
     {
         return  carburant.findById(id);
