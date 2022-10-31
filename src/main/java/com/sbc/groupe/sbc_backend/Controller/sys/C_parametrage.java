@@ -50,6 +50,16 @@ public class C_parametrage {
         return  marqueRepo.findById(id);
     }
 
+    @DeleteMapping("/delete_marque/{id_marque}")
+    public ResponseEntity<HttpStatus> deleteMarque(@PathVariable("id_marque") Integer id_marque) {
+        try {
+            marqueRepo.deleteById(id_marque);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /*************************** Param Carburant ****************************************/
     @PostMapping("/carburant/add")
     public ResponseEntity<Carburant> addCarburant(@RequestBody Carburant c)
@@ -76,6 +86,16 @@ public class C_parametrage {
     public Optional<Carburant> getCarburantById(@PathVariable Integer id)
     {
         return  carburant.findById(id);
+    }
+
+    @DeleteMapping("/delete_carburant/{id_carburant}")
+    public ResponseEntity<HttpStatus> deleteCarburant(@PathVariable("id_carburant") Integer id_carburant) {
+        try {
+            carburant.deleteById(id_carburant);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

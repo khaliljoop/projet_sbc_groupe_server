@@ -32,6 +32,7 @@ public class Vehicule {
     private Date modified;
     @Column(name = "code_vehicule",length = 10,unique = true)
     private String code_vehicule;
+    @Column(name = "type_carburant")
     private int type_carburant;
     @Column(name = "statut",length = 10) // statut='vente','location','transport'
     private String statut;

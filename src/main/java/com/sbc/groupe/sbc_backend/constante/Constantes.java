@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class Constantes {
     public static final String host="http://localhost:9091";
-    static String DIRECTORY="C:\\MesProjet\\autre_projet\\sbc_projet\\src\\assets\\images\\";
+    static String DIRECTORY="C:\\MesProjet\\autre_projet\\client_sbc_groupe\\src\\assets\\images\\";
 
     public static String upload(String urlimage) throws IOException{
         String filename="";

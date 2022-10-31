@@ -65,8 +65,8 @@ public class C_securite {
         return menuRepo.findM_menuByCode(code);
     }
 
-    @GetMapping(path = {"/getMenuById"})
-    public Optional<M_menu> getMenuById(@RequestParam Integer id) {
+    @GetMapping(path = {"/getMenuById/{id}"})
+    public Optional<M_menu> getMenuById(@PathVariable Integer id) {
         return menuRepo.findById(id);}
     @DeleteMapping("/delete_menu/{id}")
     public ResponseEntity<HttpStatus> deleteMenu(@PathVariable("id") Integer id) {
@@ -86,6 +86,9 @@ public class C_securite {
         return smenuRepo.findAll();
     }
 
+    @GetMapping(path = {"/getSMenuById/{id}"})
+    public Optional<M_smenu> getSMenuById(@PathVariable Integer id) {
+        return smenuRepo.findById(id);}
     @GetMapping(path = "/getSMenusByIdmenu/{id}")
     public List<M_smenu> getSMenusBy(@PathVariable Integer id)
     {
@@ -131,8 +134,8 @@ public class C_securite {
     {
         return profilRepo.findAll();
     }
-    @GetMapping(path = {"/getProfilById"})
-    public Optional<M_type_profil> getProfilById(@RequestParam Integer id) {
+    @GetMapping(path = {"/getProfilById/{id}"})
+    public Optional<M_type_profil> getProfilById(@PathVariable Integer id) {
         return profilRepo.findById(id);}
 
     @GetMapping(path = {"/getProfilByUid/{id}"})
@@ -240,7 +243,6 @@ public class C_securite {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     /*************** ------- USER --------- ***************/
@@ -248,7 +250,6 @@ public class C_securite {
     @ResponseBody
     public Iterable<M_user> getUsers()
     {
-        //List all = secRepo.findAll();
         return userRepo.findAll();
     }
 
@@ -263,6 +264,13 @@ public class C_securite {
         {
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PutMapping(path = "/updateUser/{uid}/{id_profil}")
+    Integer updateUser(@PathVariable String uid,@PathVariable Integer id_profil){
+        Integer b= userRepo.updateUser(uid,id_profil);
+        System.out.println("valeur de retour "+b);
+        return b;
     }
 
 
