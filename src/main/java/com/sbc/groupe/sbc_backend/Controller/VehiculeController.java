@@ -35,6 +35,12 @@ public class VehiculeController {
         return vRepo.findById(id);
     }
 
+    @GetMapping(path = {"/getVehiculeByStatut/{statut}"})
+    public List<Vehicule> getVehiculeByType(@PathVariable String statut)
+    {
+        return vRepo.getVehiculeByStatut(statut);
+    }
+
     @PostMapping( value = {"/vehicule/add"})
     public ResponseEntity<Vehicule> addVehicule( @RequestBody Vehicule v){
         try {
