@@ -17,10 +17,13 @@ import java.util.Optional;
 @CrossOrigin(origins = Constantes.host)
 @RestController
 public class VehiculeController {
-    @Autowired
-    private IVehicule vRepo;
-    @Autowired
-    private IImage imgRpo;
+    private final IVehicule vRepo;
+    private final IImage imgRpo;
+
+    public VehiculeController(IVehicule vRepo, IImage imgRpo) {
+        this.vRepo = vRepo;
+        this.imgRpo = imgRpo;
+    }
 
     @GetMapping(path = {"/getVehicules"})
     @ResponseBody
