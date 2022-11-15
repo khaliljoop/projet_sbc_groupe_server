@@ -20,10 +20,11 @@ public class User_message {
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
+    private String uid;
     private Date _date;
     private String sender_message_id ;
     private String receiver_message_id;
     @Column(length = 500)
     private String message;
-
+    private Integer isBlocked;// vrai si 1 sinon -1
 }
