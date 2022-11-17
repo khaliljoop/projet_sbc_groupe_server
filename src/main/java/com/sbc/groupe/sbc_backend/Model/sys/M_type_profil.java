@@ -18,11 +18,6 @@ public class M_type_profil {
     @Column(name = "id_profil")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_profil;
-   /* @OneToMany( cascade = {
-            CascadeType.ALL
-    })
-    @JoinColumn(name = "id_profil",referencedColumnName = "id_profil")
-    private List<M_type_action> actions=new ArrayList<>();*/
     @Column(name = "code_profile",unique = true,nullable = false)
     private String code;
     @Column(name = "libelle",length = 50)

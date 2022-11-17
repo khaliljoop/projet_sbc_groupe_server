@@ -32,7 +32,7 @@ public class MessageController {
     @ResponseBody
     Iterable<Personne> getListUid()
     {
-        return messageRepo.getMessageBySender_message_id();
+        return persRepo.getPersonneBySender_message_id();
     }
 
     @GetMapping(path = {"/getMessageByUid/{uid}"})

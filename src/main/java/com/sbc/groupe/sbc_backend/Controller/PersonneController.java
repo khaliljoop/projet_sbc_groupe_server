@@ -13,10 +13,12 @@ import java.util.Optional;
 @RestController
 //@RequestMapping("/api")
 public class PersonneController {
-    @Autowired
-    private IPersonne personneRepo;
 
-    public PersonneController() {}
+    private final IPersonne personneRepo;
+
+    public PersonneController(IPersonne personneRepo) {
+        this.personneRepo=personneRepo;
+    }
     List<Personne> pers = new ArrayList<Personne>();
 
     @GetMapping(path = {"/getPersonnes"})
@@ -33,6 +35,10 @@ public class PersonneController {
     @GetMapping(path = {"/getLoginPersonne"})
     public Personne getPersonneByUsername(@RequestParam String username) {
         return personneRepo.findPersonneByUsername(username);}
+
+    @GetMapping(path = {"/getAssistant"})
+    public Personne getAssistant() {
+        return personneRepo.getAssistant();}
 
     @GetMapping({"/personne/findLogin"})
     public Personne getPersonneByLogin(@RequestParam String username, @RequestParam String password) {

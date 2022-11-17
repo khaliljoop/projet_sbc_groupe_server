@@ -14,6 +14,6 @@ import java.util.List;
 @Repository
 public interface IUser_message extends CrudRepository<User_message,String> {
     List<User_message> findUser_messageByUid(String uid);
-    @Query(value = "SELECT p.* from personne p where p.unique_id in(SELECT DISTINCT (sender_message_id) from user_message where isBlocked=-1) ",nativeQuery = true)
+    @Query(value = "SELECT p.* from personne p where p.unique_id in(SELECT DISTINCT (sender_message_id) from user_message where is_blocked=-1) ",nativeQuery = true)
     List<Personne> getMessageBySender_message_id();
 }
