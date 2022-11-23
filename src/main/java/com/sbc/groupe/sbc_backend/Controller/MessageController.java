@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = Constantes.host)
 @RestController
 public class MessageController {
@@ -35,6 +37,12 @@ public class MessageController {
         return persRepo.getPersonneBySender_message_id();
     }
 
+    @GetMapping(path = {"/getLastMessage/{list}"})
+    @ResponseBody
+    Iterable<User_message> getMessageByUid(@PathVariable List<String> list)
+    {
+        return !list.isEmpty()? messageRepo.getLastMessage(list):null;
+    }
     @GetMapping(path = {"/getMessageByUid/{uid}"})
     @ResponseBody
     Iterable<User_message> getMessageByUid(@PathVariable String uid)
