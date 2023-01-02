@@ -2,6 +2,8 @@ package com.sbc.groupe.sbc_backend.Repository;
 import com.sbc.groupe.sbc_backend.Model.Personne;
 import com.sbc.groupe.sbc_backend.Model.User_message;
 import com.sbc.groupe.sbc_backend.Model.Vehicule;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,6 +16,7 @@ import java.util.List;
 @Repository
 public interface IUser_message extends CrudRepository<User_message,String> {
     List<User_message> findUser_messageByUid(String uid);
-    @Query(value = "SELECT * from user_message  where uid not in :list ",nativeQuery = true)
-    List<User_message> getLastMessage(List<String> list);
+    @Query(value = "SELECT * from user_message  where uid=:uid and id not in :list ",nativeQuery = true)
+    List<User_message> getLastMessage(String uid,List<String> list);
+    Page<User_message> findAll(Pageable pageable);
 }
